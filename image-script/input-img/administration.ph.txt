@@ -1,0 +1,20 @@
+
+
+
+
+$ORIGIN administration.ph.
+@ 28800 IN SOA ns1.monikerdns.net. dnsadmin.moniker.com. 2023102405 10800 3600 604800 28800
+@ 28800 IN NS ns1.monikerdns.net.
+@ 28800 IN NS ns2.monikerdns.net.
+@ 28800 IN NS ns3.monikerdns.net.
+@ 28800 IN NS ns4.monikerdns.net.
+@ 28800 IN A 95.217.178.190
+@ 28800 IN TXT google-site-verification=YnFBnuDq5SROSwLOvCAcsHMYQcsyPKusF1ipP-WwJt0
+@ 28800 IN TXT v=spf1 mx ip4: 65.108.247.60 -all
+@ 28800 IN MX 10 mail.idonot.com.
+de 28800 IN A 95.217.178.190
+diggi 28800 IN TXT v=spf1 mx ip4:95.217.209.108 -all
+diggi 28800 IN MX 10 mail.idonot.com.
+en 28800 IN A 95.217.178.190
+fr 28800 IN A 95.217.178.190
+www 28800 IN A 95.217.178.190

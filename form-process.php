@@ -39,8 +39,8 @@
 
 	$subject = $_POST['subject'].' - Contact from site';
 
-	$EmailTo = "info@yourdomain.com"; // Replace with your email.
-
+	$EmailTo = "info@administration.ph";
+	
 	// prepare email body text
 	$Body = "";
 	$Body .= "Name: ";

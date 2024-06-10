@@ -1,4 +1,4 @@
-if ($("body").not(".is-mobile").hasClass("tt-magic-cursor")) {
+if ($("body").not(".is-mobile").hasClass("")) {
     if ($(window).width() > 1024) {
         $(".magnetic-item").wrap('<div class="magnetic-wrap"></div>');
         

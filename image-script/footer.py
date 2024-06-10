@@ -137,5 +137,5 @@ def replace_footers_in_project(project_dir):
                 replace_footer_in_file(file_path)
 
 if __name__ == "__main__":
-    project_directory = '.'  # Replace with your project directory if not running from project root
+    project_directory = '../'  # Replace with your project directory if not running from project root
     replace_footers_in_project(project_directory)

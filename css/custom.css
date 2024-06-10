@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------------------
-* Author        : Awaiken
+* Author        : adminstration.ph
 * Template Name : administration.ph - Accounting & Finance HTML Template
 * File          : CSS File
 * Version       : 1.0
@@ -454,7 +454,7 @@ header.main-header{
 	margin: 0;
 }
 
-/* Custom styles for dropdown */
+/* Existing styles */
 .navbar-nav .dropdown-menu {
 	background-color: #fff;
 	border-radius: 0;
@@ -467,8 +467,46 @@ header.main-header{
 
 .navbar-nav .dropdown-menu .dropdown-item:hover {
 	background-color: #f8f9fa;
-	color: #007bff;
+	color: #FF8159;
 }
+
+/* New styles */
+.dropdown-menu-wide {
+	min-width: 900px; /* Increase the minimum width to ensure enough space */
+	width: auto;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.dropdown-menu .dropdown-header {
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
+}
+
+.dropdown-menu .dropdown-item {
+	display: flex;
+	align-items: center;
+}
+
+.dropdown-menu .dropdown-item .material-icons {
+	margin-right: 0.5rem;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+	.dropdown-menu-wide {
+			min-width: 100%; /* Ensure full width on mobile */
+			transform: none;
+			left: 0;
+			right: 0;
+	}
+}
+
+.navbar-toggler-icon {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%2888, 88, 88, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
 
 
 .main-menu .nav-menu-wrapper{
@@ -4118,3 +4156,4 @@ header.main-header{
 .footer-contact ul.company-info li a:hover {
 	text-decoration: underline;
 }
+

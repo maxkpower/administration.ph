@@ -22,23 +22,23 @@ updated_navbar = '''
             <div class="nav-menu-wrapper">
                 <ul class="navbar-nav mr-auto" id="menu">
                     <li class="nav-item"><a class="nav-link" href="{prefix}index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{prefix}about.html">About Us</a></li>
+                    <!--<li class="nav-item"><a class="nav-link" href="{prefix}about.html">About Us</a></li>-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
-                        <div class="dropdown-menu dropdown-menu-wide p-3" aria-labelledby="servicesDropdown">
+                        <div class="dropdown-menu dropdown-menu-wide p-3" aria-labelledby="servicesDropdown" style="min-width: 800px;">
                             <div class="container-fluid">
                                 <div class="row">
                                     <!-- Accounting Column -->
                                     <div class="col-md-4">
                                         <h6 class="dropdown-header">Accounting</h6>
                                         <a class="dropdown-item d-flex align-items-center" href="{prefix}services/bookkeeping.html">
-                                            <span class="material-icons mr-2">receipt</span> Bookkeeping and Accounting
+                                            <span class="material-icons mr-2">receipt</span> Bookkeeping & Accounting
                                         </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/tax.html">
-                                            <span class="material-icons mr-2">calculate</span> Tax Planning and Preparation
+                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/bookkeeping.html">
+                                            <span class="material-icons mr-2">calculate</span> Tax Planning & Preparation
                                         </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/reporting.html">
-                                            <span class="material-icons mr-2">bar_chart</span> Financial Reporting and Analysis
+                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/bookkeeping.html">
+                                            <span class="material-icons mr-2">bar_chart</span> Financial Reporting
                                         </a>
                                         <a class="dropdown-item d-flex align-items-center" href="{prefix}services/payroll.html">
                                             <span class="material-icons mr-2">attach_money</span> Payroll Management
@@ -53,11 +53,11 @@ updated_navbar = '''
                                         <a class="dropdown-item d-flex align-items-center" href="{prefix}services/relocation.html">
                                             <span class="material-icons mr-2">flight_takeoff</span> Relocation Assistance
                                         </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/accommodation.html">
-                                            <span class="material-icons mr-2">home</span> Accommodation and Settling-in Support
+                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/relocation.html">
+                                            <span class="material-icons mr-2">home</span> Housing & Settling-in
                                         </a>
                                         <a class="dropdown-item d-flex align-items-center" href="{prefix}services/visa.html">
-                                            <span class="material-icons mr-2">airplane_ticket</span> Residency and Visa Assistance
+                                            <span class="material-icons mr-2">airplane_ticket</span> Residency & Visa Assistance
                                         </a>
                                     </div>
                                     <!-- Outsourcing Column -->
@@ -69,7 +69,7 @@ updated_navbar = '''
                                         <a class="dropdown-item d-flex align-items-center" href="{prefix}services/company-incorporation.html">
                                             <span class="material-icons mr-2">business_center</span> Business Incorporation
                                         </a>
-                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/compliance.html">
+                                        <a class="dropdown-item d-flex align-items-center" href="{prefix}services/company-incorporation.html">
                                             <span class="material-icons mr-2">gavel</span> Regulatory Compliance
                                         </a>
                                     </div>
@@ -93,8 +93,21 @@ updated_navbar = '''
 </nav>
 '''
 
+# Required CSS and JS imports
+required_imports = [
+    '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">',
+    '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">',
+    '<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>',
+    '<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>',
+    '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>'
+]
+
+def capitalize_title(file_name):
+    """Convert a file name to a capitalized title."""
+    return ' '.join(word.capitalize() for word in file_name.replace('.html', '').replace('-', ' ').split())
+
 def update_navbar_in_html(file_path):
-    """Update the navbar in the given HTML file."""
+    """Update the navbar in the given HTML file and ensure required imports are present."""
     # Determine the prefix based on the file's directory depth
     depth = len(os.path.relpath(file_path, start='.').split(os.sep)) - 1
     prefix = '../' * depth
@@ -110,10 +123,23 @@ def update_navbar_in_html(file_path):
         new_navbar_soup = BeautifulSoup(updated_navbar.format(prefix=prefix), 'html.parser')
         navbar.replace_with(new_navbar_soup)
 
+        # Ensure required imports are present
+        head = soup.find('head')
+        for import_tag in required_imports:
+            if not head.find_all(string=lambda text: import_tag in text):
+                head.append(BeautifulSoup(import_tag, 'html.parser'))
+
+        # Update the page title
+        title_tag = soup.find('title')
+        if title_tag:
+            file_name = os.path.basename(file_path)
+            page_name = capitalize_title(file_name)
+            title_tag.string = f'administration.ph - Accounting Services for the Philippines | {page_name}'
+
         # Write the updated HTML back to the file
         with open(file_path, 'w', encoding='utf-8') as file:
             file.write(str(soup))
-        print(f'Updated navbar in: {file_path}')
+        print(f'Updated navbar and imports in: {file_path}')
     else:
         print(f'No navbar found in: {file_path}')
 
@@ -126,4 +152,4 @@ def update_navbars_in_project(directory):
                 update_navbar_in_html(file_path)
 
 # Update navbars in all HTML files in the current project directory
-update_navbars_in_project('.')
+update_navbars_in_project('../')

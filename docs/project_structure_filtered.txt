@@ -1,0 +1,64 @@
+--- Folder Structure ---
+404.html
+about.html
+[blog]
+    ├── accounting-tips-for-freelancers.html
+    ├── how-to-pay-taxes.html
+    ├── taxes-as-freelancer.html
+    └── vat-for-freelancers.html
+blog.html
+contact.html
+[css]
+    ├── all.css
+    ├── all.min.css
+    ├── animate.css
+    ├── bootstrap.css
+    ├── bootstrap.css.map
+    ├── bootstrap.min.css
+    ├── bootstrap.min.css.map
+    ├── custom.css
+    ├── magnific-popup.css
+    ├── slicknav.min.css
+    └── swiper-bundle.min.css
+form-process.php
+[image-script]
+    ├── .DS_Store
+    ├── [input-img]
+        ├── kamran-abdullayev-9V1cYW4JIfQ-unsplash.jpg
+        └── tax-deduct.jpeg
+    ├── link-checker.py
+    ├── [output-webp]
+        └── tax-deduct.webp
+    └── script.py
+index.html
+[js]
+    ├── ScrollTrigger.min.js
+    ├── SmoothScroll.js
+    ├── SplitText.js
+    ├── bootstrap.js
+    ├── bootstrap.js.map
+    ├── bootstrap.min.js
+    ├── bootstrap.min.js.map
+    ├── function.js
+    ├── gsap.min.js
+    ├── jquery-3.7.1.min.js
+    ├── jquery.counterup.min.js
+    ├── jquery.magnific-popup.min.js
+    ├── jquery.slicknav.js
+    ├── jquery.waypoints.min.js
+    ├── magiccursor.js
+    ├── swiper-bundle.min.js
+    ├── validator.min.js
+    └── wow.js
+[services]
+    ├── administrative-support.html
+    ├── blog-single.html
+    ├── bookkeeping.html
+    ├── company-incorporation.html
+    ├── payroll.html
+    ├── relocation.html
+    ├── retirement.html
+    └── visa.html
+services.html
+
+--- File Contents ---
